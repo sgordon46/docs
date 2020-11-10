@@ -41,7 +41,16 @@ xref:../install/defender_types.adoc[Single Container Defenders] are installed on
 
 [.procedure]
 . Validate that the node where you will install Defender can reach Console over the network.
+ifdef::prisma_cloud[]
+  $ curl -k https://<PATH_TO_CONSOLE>/api/v1/_ping
 
+. Retrieve an auth token from Console.  
+
+  $ curl -H "Content-Type: application/json" \
+    -d '{"username":"<ACCESS_TOKEN>", "password":"<SECRET_KEY>"}' \
+    https://<PATH_TO_CONSOLE>/api/v1/authenticate
+endif::prisma_cloud[]
+ifdef::compute_edition[]
   $ curl -k https://<COMPUTE_CONSOLE>:8083/api/v1/_ping
 
 . Retrieve an auth token from Console.
@@ -49,6 +58,8 @@ xref:../install/defender_types.adoc[Single Container Defenders] are installed on
   $ curl -H "Content-Type: application/json" \
     -d '{"username":"<USERNAME>", "password":"<PASSWORD>"}' \
     https://<COMPUTE_CONSOLE>:8083/api/v1/authenticate
+endif::compute_edition[]
+
 +
 Where:
 +

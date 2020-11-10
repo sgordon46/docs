@@ -99,7 +99,7 @@ COMPUTE_CONSOLE = \https://<IPADDR>:8083
 
 For the default Kubernetes installation procedure, the Console service is exposed by a LoadBalancer, and so the address for COMPUTE_CONSOLE is
 
-COMPUTE_CONSLE = \https://<LOAD_BALANCER>:8083
+COMPUTE_CONSOLE = \https://<LOAD_BALANCER>:8083
 
 Access to the API requires authentication.
 You can either:

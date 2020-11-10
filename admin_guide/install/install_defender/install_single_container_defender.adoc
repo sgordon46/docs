@@ -11,15 +11,27 @@ Install Container Defender on each host that you want Prisma Cloud to protect.
 * Your system meets all minimum
 xref:../../install/system_requirements.adoc[system requirements].
 * You have already xref:../../install/getting_started.adoc[installed Console], and it can be accessed over the network from the host where you want to install Defender.
+ifdef::prisma_cloud[]
+* You have sudo access to the host where Defender will be installed.
+endif::prisma_cloud[]
+ifdef::compute_edition[]
 * Ports 8083 and 8084 are open on the host where Console runs.
 * Port 8084 is open on the host where Defender runs.
 Console and Defender communicate with each other over a web socket on port 8084.
 * You have sudo access to the host where Defender will be installed.
+endif::compute_edition[]
+
 
 [.procedure]
 . Verify that the host machine where you install Defender can connect to Console.
 
+ifdef::prisma_cloud[]
+  $ curl -sk -D - https://<PATH_TO_CONSOLE>/api/v1/_ping
+endif::prisma_cloud[]
+ifdef::compute_edition[]
   $ curl -sk -D - https://<CONSOLE_IP_ADDRESS|HOSTNAME>:8083/api/v1/_ping
+endif::compute_edition[]
+
 +
 If curl returns an HTTP response status code of 200, you have connectivity to Console.
 If you customized the setup when you installed Console, you might need to specify a different port.
